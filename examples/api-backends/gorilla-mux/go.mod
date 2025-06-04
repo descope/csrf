@@ -5,7 +5,7 @@ module github.com/gorilla-mux/examples/api-backends/gorilla-mux
 go 1.20
 
 require (
-	github.com/gorilla/csrf v1.7.1
+	github.com/descope/csrf v1.0.0
 	github.com/gorilla/handlers v1.5.1
 	github.com/gorilla/mux v1.8.0
 )

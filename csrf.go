@@ -127,7 +127,7 @@ type options struct {
 //	import (
 //		"html/template"
 //
-//		"github.com/gorilla/csrf"
+//		"github.com/descope/csrf"
 //		"github.com/gorilla/mux"
 //	)
 //

@@ -17,8 +17,8 @@ field.
 gorilla/csrf is easy to use: add the middleware to individual handlers with
 the below:
 
-    CSRF := csrf.Protect([]byte("32-byte-long-auth-key"))
-    http.HandlerFunc("/route", CSRF(YourHandler))
+	CSRF := csrf.Protect([]byte("32-byte-long-auth-key"))
+	http.HandlerFunc("/route", CSRF(YourHandler))
 
 ... and then collect the token with `csrf.Token(r)` before passing it to the
 template, JSON body or HTTP header (you pick!). gorilla/csrf inspects the form body
@@ -40,7 +40,7 @@ in order to protect malicious POST requests being made:
 		"html/template"
 		"net/http"
 
-		"github.com/gorilla/csrf"
+		"github.com/descope/csrf"
 		"github.com/gorilla/mux"
 	)
 
@@ -109,7 +109,7 @@ providing a JSON API:
 	package main
 
 	import (
-		"github.com/gorilla/csrf"
+		"github.com/descope/csrf"
 		"github.com/gorilla/mux"
 	)
 
@@ -171,6 +171,5 @@ important.
 and the one-time-pad used for masking them.
 
 This library does not seek to be adventurous.
-
 */
 package csrf

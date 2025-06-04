@@ -1,9 +1,9 @@
 # gorilla/csrf
 
-![testing](https://github.com/gorilla/csrf/actions/workflows/test.yml/badge.svg)
+![testing](https://github.com/descope/csrf/actions/workflows/test.yml/badge.svg)
 [![codecov](https://codecov.io/github/gorilla/csrf/branch/main/graph/badge.svg)](https://codecov.io/github/gorilla/csrf)
-[![godoc](https://godoc.org/github.com/gorilla/csrf?status.svg)](https://godoc.org/github.com/gorilla/csrf)
-[![sourcegraph](https://sourcegraph.com/github.com/gorilla/csrf/-/badge.svg)](https://sourcegraph.com/github.com/gorilla/csrf?badge)
+[![godoc](https://godoc.org/github.com/descope/csrf?status.svg)](https://godoc.org/github.com/descope/csrf)
+[![sourcegraph](https://sourcegraph.com/github.com/descope/csrf/-/badge.svg)](https://sourcegraph.com/github.com/descope/csrf?badge)
 
 
 ![Gorilla Logo](https://github.com/gorilla/.github/assets/53367916/d92caabf-98e0-473e-bfbf-ab554ba435e5)
@@ -49,7 +49,7 @@ gorilla/csrf is also compatible with middleware 'helper' libraries like
 With a properly configured Go toolchain:
 
 ```sh
-go get github.com/gorilla/csrf
+go get github.com/descope/csrf
 ```
 
 ## Examples
@@ -93,7 +93,7 @@ package main
 import (
     "net/http"
 
-    "github.com/gorilla/csrf"
+    "github.com/descope/csrf"
     "github.com/gorilla/mux"
 )
 
@@ -157,7 +157,7 @@ as we don't handle any POST/PUT/DELETE requests with our top-level router.
 package main
 
 import (
-    "github.com/gorilla/csrf"
+    "github.com/descope/csrf"
     "github.com/gorilla/mux"
 )
 
@@ -226,7 +226,7 @@ feature to allow the host of your JavaScript application to make requests to you
 package main
 
 import (
-    "github.com/gorilla/csrf"
+    "github.com/descope/csrf"
     "github.com/gorilla/mux"
 )
 

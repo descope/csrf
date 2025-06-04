@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 package main
@@ -10,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gorilla/csrf"
+	"github.com/descope/csrf"
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
