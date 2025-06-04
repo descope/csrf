@@ -106,7 +106,7 @@ type options struct {
 	FieldName      string
 	ErrorHandler   http.Handler
 	CookieName     string
-	TrustedOrigins string
+	TrustedOrigins []string
 }
 
 // Protect is HTTP middleware that provides Cross-Site Request Forgery
@@ -277,8 +277,6 @@ func (cs *csrf) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			requestURL.Host = r.Host
 		}
 
-		trustedOrigins := strings.Split(cs.opts.TrustedOrigins, ",")
-
 		// if we have an Origin header, check it against our allowlist
 		origin := r.Header.Get("Origin")
 		if origin != "" {
@@ -288,7 +286,7 @@ func (cs *csrf) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				cs.opts.ErrorHandler.ServeHTTP(w, r)
 				return
 			}
-			if !sameOrigin(&requestURL, parsedOrigin) && !slices.ContainsFunc(trustedOrigins, func(trustedOrigin string) bool {
+			if !sameOrigin(&requestURL, parsedOrigin) && !slices.ContainsFunc(cs.opts.TrustedOrigins, func(trustedOrigin string) bool {
 				return trustedOrigin == "*" || strings.HasSuffix(parsedOrigin.Host, trustedOrigin)
 			}) {
 				r = envError(r, ErrBadOrigin)
@@ -323,7 +321,7 @@ func (cs *csrf) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			// If the request is being served via TLS and the Referer is not the
 			// same origin, check the domain against our allowlist. We only
 			// check when we have host information from the referer.
-			if referer.Host != "" && referer.Host != r.Host && !slices.ContainsFunc(trustedOrigins, func(trustedOrigin string) bool {
+			if referer.Host != "" && referer.Host != r.Host && !slices.ContainsFunc(cs.opts.TrustedOrigins, func(trustedOrigin string) bool {
 				return trustedOrigin == "*" || strings.HasSuffix(referer.Host, trustedOrigin)
 			}) {
 				r = envError(r, ErrBadReferer)
