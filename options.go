@@ -125,7 +125,7 @@ func CookieName(name string) Option {
 // from a different domain than the API server - to correctly pass a CSRF check.
 //
 // You should only provide origins you own or have full control over.
-func TrustedOrigins(origins []string) Option {
+func TrustedOrigins(origins string) Option {
 	return func(cs *csrf) {
 		cs.opts.TrustedOrigins = origins
 	}
